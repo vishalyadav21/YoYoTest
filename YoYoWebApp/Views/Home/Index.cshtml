@@ -1,0 +1,75 @@
+﻿@model YoYoWebApp.Models.FitnessRatingViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    .circle {
+        border-radius: 50%;
+        border: 1px solid;
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<div>
+    <h4>YoYo Test</h4>
+</div>
+<div> 
+    @if (String.IsNullOrEmpty(Model.ShuttleNo))
+    {
+    <div class=" col-md-3 row circle text-center">
+        @Html.ActionLink("Play", "Play", "Home")
+    </div>
+    }
+    else
+    {
+    <div class="col-md-3 row circle text-center">
+        <div class="col-sm-12">
+            @Html.DisplayNameFor(model => model.SpeedLevel)
+            @Html.DisplayFor(model => model.SpeedLevel)
+        </div>
+        <div class="col-sm-12">
+            @Html.DisplayNameFor(model => model.ShuttleNo)
+            @Html.DisplayFor(model => model.ShuttleNo)
+        </div>
+        <div class="col-sm-12">
+            @Html.DisplayNameFor(model => model.Speed)
+            @Html.DisplayFor(model => model.Speed)
+        </div>
+    </div>  
+    }
+
+    <div class="col-md-12 row text-center"> 
+        <div class="col-sm-4">
+            @Html.DisplayNameFor(model => model.NextShuttle)
+            <span id="NextShuttle">@Model.NextShuttle</span>
+        </div>
+        <div class="col-sm-4">
+            @Html.DisplayNameFor(model => model.LevelTime)
+            @Html.DisplayFor(model => model.LevelTime)
+        </div>
+        <div class="col-sm-4">
+            @Html.DisplayNameFor(model => model.AccumulatedShuttleDistance)
+            @Html.DisplayFor(model => model.AccumulatedShuttleDistance)
+        </div>
+    </div>  
+</div>
+
+<div>
+    <span>Track</span>
+</div>  
+<partial name="TrackDetails" model="Model.TrackDetails">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            debugger; 
+            var x = setInterval(function () {
+                var nextShuttle = $("#NextShuttle").html();
+                $("#NextShuttle").html(Math.floor((nextShuttle % (1000 * 60)) / 1000)); 
+              //  $("#NextShuttle").html(Math.floor((nextShuttle % (1000 * 60)) / 1000));
+            },1000); 
+        });
+    </script>

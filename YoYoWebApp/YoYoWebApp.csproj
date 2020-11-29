@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="fitnessrating_beeptest.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="fitnessrating_beeptest.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DomainEntities\DomainEntities.csproj" />
+    <ProjectReference Include="..\RepositoryServices\RepositoryServices.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+</Project>

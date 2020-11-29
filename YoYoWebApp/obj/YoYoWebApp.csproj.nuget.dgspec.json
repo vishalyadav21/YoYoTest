@@ -1,0 +1,217 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoWebApp\\YoYoWebApp.csproj": {}
+  },
+  "projects": {
+    "E:\\02020\\Digital mind\\YoYo-Web-App\\DomainEntities\\DomainEntities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\02020\\Digital mind\\YoYo-Web-App\\DomainEntities\\DomainEntities.csproj",
+        "projectName": "DomainEntities",
+        "projectPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\DomainEntities\\DomainEntities.csproj",
+        "packagesPath": "C:\\Users\\91902\\.nuget\\packages\\",
+        "outputPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\DomainEntities\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\91902\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\02020\\Digital mind\\YoYo-Web-App\\RepositoryServices\\RepositoryServices.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\02020\\Digital mind\\YoYo-Web-App\\RepositoryServices\\RepositoryServices.csproj",
+        "projectName": "RepositoryServices",
+        "projectPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\RepositoryServices\\RepositoryServices.csproj",
+        "packagesPath": "C:\\Users\\91902\\.nuget\\packages\\",
+        "outputPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\RepositoryServices\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\91902\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "E:\\02020\\Digital mind\\YoYo-Web-App\\DomainEntities\\DomainEntities.csproj": {
+                "projectPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\DomainEntities\\DomainEntities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoWebApp\\YoYoWebApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoWebApp\\YoYoWebApp.csproj",
+        "projectName": "YoYoWebApp",
+        "projectPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoWebApp\\YoYoWebApp.csproj",
+        "packagesPath": "C:\\Users\\91902\\.nuget\\packages\\",
+        "outputPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoWebApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\91902\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "E:\\02020\\Digital mind\\YoYo-Web-App\\DomainEntities\\DomainEntities.csproj": {
+                "projectPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\DomainEntities\\DomainEntities.csproj"
+              },
+              "E:\\02020\\Digital mind\\YoYo-Web-App\\RepositoryServices\\RepositoryServices.csproj": {
+                "projectPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\RepositoryServices\\RepositoryServices.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,93 @@
+﻿@model YoYoWebApp.Models.FitnessRatingViewModel
+
+<style>
+    .circle {
+        border-radius: 50%;
+        border: 1px solid;
+        width: 200px;
+        height: 200px;
+    }
+
+    .playButton {
+        width: 100%;
+        padding-top: 5rem;
+    }
+</style>
+
+<div id="divFitnesRating">
+    @if (String.IsNullOrEmpty(Model.ShuttleNo))
+    {
+        <div class="col-md-offset-4 col-md-3 col-sm-12 col-xs-12 row circle text-center">
+            <button class="playButton" id="playButton" type="button">Play</button>
+            @*           @Html.ActionLink("Play", "Play", "YoYoTest",new { },new { @class="playButton", @id="playButton" })*@
+        </div>
+    }
+    else
+    {
+        <div class="col-md-offset-4 col-md-3 col-sm-12 col-xs-12 row circle text-center">
+            <div class="col-sm-12">
+                @Html.DisplayNameFor(model => model.SpeedLevel)
+                @Html.DisplayFor(model => model.SpeedLevel)
+            </div>
+            <div class="col-sm-12">
+                @Html.DisplayNameFor(model => model.ShuttleNo)
+                @Html.DisplayFor(model => model.ShuttleNo)
+            </div>
+            <div class="col-sm-12">
+                @Html.DisplayNameFor(model => model.Speed)
+                @Html.DisplayFor(model => model.Speed)
+            </div>
+        </div>
+    }
+
+    <div class="col-md-12 row text-center">
+        <div class="col-sm-4">
+            @Html.DisplayNameFor(model => model.NextShuttle)
+            <span id="NextShuttle">@Model.NextShuttle</span>
+        </div>
+        <div class="col-sm-4">
+            @Html.DisplayNameFor(model => model.LevelTime)
+            @Html.DisplayFor(model => model.LevelTime)
+        </div>
+        <div class="col-sm-4">
+            @Html.DisplayNameFor(model => model.AccumulatedShuttleDistance)
+            @Html.DisplayFor(model => model.AccumulatedShuttleDistance)
+        </div>
+    </div>
+</div>
+
+<script src="~/js/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var nextShuttleTimer = 0;
+        function GetNextShuttleDetails() {
+            if (parseInt($("#NextShuttle").html()) == 0) {
+                var level = "@(Model.SpeedLevel == "" ? "0" : Model.SpeedLevel)";
+                var shuttle =  "@(Model.ShuttleNo == "" ? "0" : Model.ShuttleNo)";
+                $.ajax({
+                    url: "/yoyotest/Play",
+                    data: { level: level, shuttle: shuttle },
+                    success: function (ajaxresult) {
+                        debugger;
+                        $("#divFitnesRating").html(ajaxresult);
+                        nextShuttleTimer = $("#NextShuttle").html();
+                        var clearIntervalAfter = setInterval(function () {
+                            if (parseInt($("#NextShuttle").html()) != 0) {
+                                $("#NextShuttle").html($("#NextShuttle").html() - 1);
+                            }
+                            if (parseInt($("#NextShuttle").html()) == 0) {
+                                clearInterval(clearIntervalAfter);
+                            }
+                        }, 1000); 
+                    } 
+                });
+            }
+        }
+        var nextLevelInterval = setInterval(GetNextShuttleDetails(), nextShuttleTimer);
+
+        $("#playButton").click(function () {
+            GetNextShuttleDetails();
+        });
+        
+    });
+</script>

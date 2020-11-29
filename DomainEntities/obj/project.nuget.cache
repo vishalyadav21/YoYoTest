@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "5pj9IfaCVfpSNoAO6byNyVglq88+yk6Ug3GlbjZPn18RCMGZNQxV23Uj9RXjS4sdYESqKPOonX/sAPV11gLznQ==",
+  "success": true,
+  "projectFilePath": "E:\\02020\\Digital mind\\YoYo-Web-App\\DomainEntities\\DomainEntities.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\91902\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}

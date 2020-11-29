@@ -1,0 +1,34 @@
+﻿@model IEnumerable<YoYoWebApp.TrackDetailsViewModel>
+
+
+    <table class="table">
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SrNo)
+                </td>
+                <td class="col-md-4">
+                    @Html.DisplayFor(modelItem => item.AthleteName)
+                </td>
+                @if (item.IsStopped)
+                {
+                    <td>
+                        @Html.DropDownListFor(model => item.StoppedAt, new SelectList(item.LevelVsShuttleList), "--Select--", new { @class = "form-control col-md-4" })
+                    </td>
+                }
+                else
+                {
+                    <td class="col-md-4">
+                        @Html.ActionLink("Warn", "Warn", new { name = item.AthleteName, isWarned = item.IsWarned })
+                    </td>
+                    <td class="col-md-4">
+                        @Html.ActionLink("Stop", "Stop", new { name = item.AthleteName, isWarned = item.IsStopped })
+                    </td> 
+                }
+            </tr>
+            }
+        </tbody>
+    </table>
+ 
