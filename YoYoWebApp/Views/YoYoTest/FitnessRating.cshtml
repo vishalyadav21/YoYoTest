@@ -10,16 +10,18 @@
 
     .playButton {
         width: 100%;
-        padding-top: 5rem;
+        /*padding-top: 5rem;
+        text-decoration: none;
+        background-color: transparent;
+        color: #0366d6;*/
     }
 </style>
 
 <div id="divFitnesRating">
     @if (String.IsNullOrEmpty(Model.ShuttleNo))
     {
-        <div class="col-md-offset-4 col-md-3 col-sm-12 col-xs-12 row circle text-center">
-            <button class="playButton" id="playButton" type="button">Play</button>
-            @*           @Html.ActionLink("Play", "Play", "YoYoTest",new { },new { @class="playButton", @id="playButton" })*@
+        <div class="col-md-offset-4 col-md-3 col-sm-12 col-xs-12 row text-center">
+            <button class="playButton text-center" id="playButton" type="button">Play</button>
         </div>
     }
     else
@@ -27,15 +29,15 @@
         <div class="col-md-offset-4 col-md-3 col-sm-12 col-xs-12 row circle text-center">
             <div class="col-sm-12">
                 @Html.DisplayNameFor(model => model.SpeedLevel)
-                @Html.DisplayFor(model => model.SpeedLevel)
+                <span id="SpeedLevel">@Model.SpeedLevel</span> 
             </div>
             <div class="col-sm-12">
-                @Html.DisplayNameFor(model => model.ShuttleNo)
-                @Html.DisplayFor(model => model.ShuttleNo)
+                @Html.DisplayNameFor(model => model.ShuttleNo) 
+                <span id="ShuttleNo">@Model.ShuttleNo</span>
             </div>
             <div class="col-sm-12">
-                @Html.DisplayNameFor(model => model.Speed)
-                @Html.DisplayFor(model => model.Speed)
+                @Html.DisplayNameFor(model => model.Speed) 
+                <span id="Speed">@Model.Speed</span>
             </div>
         </div>
     }
@@ -58,19 +60,18 @@
 
 <script src="~/js/jquery-3.5.1.min.js"></script>
 <script>
-    $(document).ready(function () {
-        var nextShuttleTimer = 0;
+    $(document).ready(function () { 
+        var nextShuttleStartsIn = 0;
         function GetNextShuttleDetails() {
             if (parseInt($("#NextShuttle").html()) == 0) {
-                var level = "@(Model.SpeedLevel == "" ? "0" : Model.SpeedLevel)";
-                var shuttle =  "@(Model.ShuttleNo == "" ? "0" : Model.ShuttleNo)";
+                var level = $("#SpeedLevel").html();
+                var shuttle = $("#ShuttleNo").html();
                 $.ajax({
                     url: "/yoyotest/Play",
-                    data: { level: level, shuttle: shuttle },
+                    data: { level: parseInt(level), shuttle: parseInt(shuttle) },
                     success: function (ajaxresult) {
-                        debugger;
-                        $("#divFitnesRating").html(ajaxresult);
-                        nextShuttleTimer = $("#NextShuttle").html();
+                        $("#divFitnesRating").html(ajaxresult); 
+                        nextShuttleStartsIn = parseInt($("#NextShuttle").html());
                         var clearIntervalAfter = setInterval(function () {
                             if (parseInt($("#NextShuttle").html()) != 0) {
                                 $("#NextShuttle").html($("#NextShuttle").html() - 1);
@@ -80,14 +81,17 @@
                             }
                         }, 1000); 
                     } 
+                }).done(function () { 
+                    setTimeout(function () { GetNextShuttleDetails(); }, nextShuttleStartsIn * 1000);
                 });
             }
         }
-        var nextLevelInterval = setInterval(GetNextShuttleDetails(), nextShuttleTimer);
-
+       
         $("#playButton").click(function () {
             GetNextShuttleDetails();
         });
         
     });
+
+   
 </script>

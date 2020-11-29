@@ -6038,11 +6038,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoWebApp\\YoYoWebApp.csproj",
+      "projectUniqueName": "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoTest\\YoYoWebApp\\YoYoWebApp.csproj",
       "projectName": "YoYoWebApp",
-      "projectPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoWebApp\\YoYoWebApp.csproj",
+      "projectPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoTest\\YoYoWebApp\\YoYoWebApp.csproj",
       "packagesPath": "C:\\Users\\91902\\.nuget\\packages\\",
-      "outputPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoWebApp\\obj\\",
+      "outputPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoTest\\YoYoWebApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -6063,11 +6063,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "E:\\02020\\Digital mind\\YoYo-Web-App\\DomainEntities\\DomainEntities.csproj": {
-              "projectPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\DomainEntities\\DomainEntities.csproj"
+            "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoTest\\DomainEntities\\DomainEntities.csproj": {
+              "projectPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoTest\\DomainEntities\\DomainEntities.csproj"
             },
-            "E:\\02020\\Digital mind\\YoYo-Web-App\\RepositoryServices\\RepositoryServices.csproj": {
-              "projectPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\RepositoryServices\\RepositoryServices.csproj"
+            "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoTest\\RepositoryServices\\RepositoryServices.csproj": {
+              "projectPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoTest\\RepositoryServices\\RepositoryServices.csproj"
             }
           }
         }

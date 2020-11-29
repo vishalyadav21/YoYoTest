@@ -19,23 +19,31 @@ namespace YoYoWebApp.Controllers
             _repositoryService = repositoryService;
         }
 
-        public IActionResult Play(string level = "0", string shuttle = "0")
+        public IActionResult Play(int level, int shuttle)
         {
+            var nextShuttle = GetNextPresentShuttle(level, shuttle);
             var fitnessRatingViewModel = new FitnessRatingViewModel();
             var beeptestjson = _repositoryService.ReadFitnessRatingJson();
-            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FitnessRatingViewModel>>(beeptestjson).OrderBy(x => Convert.ToInt32(x.SpeedLevel)).FirstOrDefault(x => Convert.ToInt32(x.SpeedLevel) > Convert.ToInt32(level));
+            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FitnessRatingViewModel>>(beeptestjson)
+                        .OrderBy(x => Convert.ToInt32(x.SpeedLevel))
+                        .FirstOrDefault(x => Convert.ToInt32(x.SpeedLevel) > level);
             result.NextShuttle = Convert.ToDateTime("00:" + result.CommulativeTime).Subtract(Convert.ToDateTime("00:" + result.StartTime)).TotalSeconds;
             result.NextShuttle = 5;
-            return PartialView("FitnessRating", result);
-
-
-            //var finalResult = result
-            //            .GroupBy(f => new { f.SpeedLevel })
-            //            .Select(a => a.AsEnumerable())
-            //            .Select(b => b.OrderBy(f => f.ShuttleNo)).ToList();
-
+            return PartialView("FitnessRating", result); 
         }
 
+        public IEnumerable<string> GetNextPresentShuttle(int level, int shuttle)
+        { 
+            var beeptestjson = _repositoryService.ReadFitnessRatingJson();
+            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FitnessRatingViewModel>>(beeptestjson)
+                         .GroupBy(f => new { f.SpeedLevel })
+                        .Select(a => a.AsEnumerable())
+                        .Select(b => b.OrderBy(f => f.ShuttleNo).FirstOrDefault(x => Convert.ToInt32(x.ShuttleNo) > shuttle))
+                        .Select(x=>x.ShuttleNo);
+             
+
+            return result;
+        }
         public IActionResult Index()
         {
             var yoYoTestWrapper = new YoYoTestWrapper();

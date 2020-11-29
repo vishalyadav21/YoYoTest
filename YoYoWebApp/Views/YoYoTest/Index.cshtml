@@ -1,5 +1,5 @@
 ﻿@model YoYoTestWrapper
-
+    <script src="~/js/jquery-3.5.1.min.js"></script>
     <div>
         <h4>YoYo Test</h4>
     </div>
@@ -26,34 +26,25 @@
                         else
                         {
                             <td class="col-md-4">
-                                @Html.ActionLink("Warn", "Warn", new { name = item.AthleteName, isWarned = item.IsWarned })
+                                <button id="warn_@(item.SrNo)" onclick="AthleteWarned('warn_@(item.SrNo)');" data-IsWarned="@(item.IsWarned)">Warn</button>
                             </td>
                             <td class="col-md-4">
-                                @Html.ActionLink("Stop", "Stop", new { name = item.AthleteName, isWarned = item.IsStopped })
-                            </td>
-
+                                <button id="stop_@(item.SrNo)" onclick="AthleteStopped('stop_@(item.SrNo)');" data-IsStopped="@(item.IsStopped)">Stop</button>
+                            </td> 
                         }
-                    </tr>
+                    </tr>  
                 }
             </tbody>
         </table>
-
-        <script src="~/js/jquery-3.5.1.min.js"></script>
-   
         <script>
-            $(document).ready(function () {   
-                //$("#playButton").click(function (){ 
-                     
-                //    $.ajax({
-                //        url: "/yoyotest/Play/0",  
-                //        success: function (ajaxresult) {
-                //            debugger;
-                //            $("#divFitnesRating").html(ajaxresult);
-                //        },
-                //        error: function () {
+            function AthleteWarned(obj) {
+                $("#" + obj).text("Warned")
+            }
+            function AthleteStopped(obj) {
+                $("#" + obj).text("Stopped");
+            }
+</script>
 
-                //        },
-                //    });
-                //});
-            });
-        </script>
+       
+   
+        

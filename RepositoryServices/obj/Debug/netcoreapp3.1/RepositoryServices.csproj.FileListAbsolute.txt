@@ -10,3 +10,15 @@ E:\02020\Digital mind\YoYo-Web-App\RepositoryServices\obj\Debug\netcoreapp3.1\Re
 E:\02020\Digital mind\YoYo-Web-App\RepositoryServices\obj\Debug\netcoreapp3.1\RepositoryServices.csproj.CopyComplete
 E:\02020\Digital mind\YoYo-Web-App\RepositoryServices\obj\Debug\netcoreapp3.1\RepositoryServices.dll
 E:\02020\Digital mind\YoYo-Web-App\RepositoryServices\obj\Debug\netcoreapp3.1\RepositoryServices.pdb
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\RepositoryServices\bin\Debug\netcoreapp3.1\RepositoryServices.deps.json
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\RepositoryServices\bin\Debug\netcoreapp3.1\RepositoryServices.dll
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\RepositoryServices\bin\Debug\netcoreapp3.1\RepositoryServices.pdb
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\RepositoryServices\bin\Debug\netcoreapp3.1\DomainEntities.dll
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\RepositoryServices\bin\Debug\netcoreapp3.1\DomainEntities.pdb
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\RepositoryServices\obj\Debug\netcoreapp3.1\RepositoryServices.csprojAssemblyReference.cache
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\RepositoryServices\obj\Debug\netcoreapp3.1\RepositoryServices.AssemblyInfoInputs.cache
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\RepositoryServices\obj\Debug\netcoreapp3.1\RepositoryServices.AssemblyInfo.cs
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\RepositoryServices\obj\Debug\netcoreapp3.1\RepositoryServices.csproj.CoreCompileInputs.cache
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\RepositoryServices\obj\Debug\netcoreapp3.1\RepositoryServices.csproj.CopyComplete
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\RepositoryServices\obj\Debug\netcoreapp3.1\RepositoryServices.dll
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\RepositoryServices\obj\Debug\netcoreapp3.1\RepositoryServices.pdb

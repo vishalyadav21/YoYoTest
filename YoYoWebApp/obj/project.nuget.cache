@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WAKro7arqexwGceg5tsozBjlcPpPn6H0hxKv1B74Z7LwneljxS5mcC4WySgCRTVJk4HEogt9LRigQHSDoErX8w==",
+  "dgSpecHash": "rBR3QR2ABLQAAehcjtuZasxRVKdETOPy+y3Tru+pGKYlnXhb+xMNFxnn2X2Xe8D0WujF/h/Xpxnpo3nHi8+hXA==",
   "success": true,
-  "projectFilePath": "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoWebApp\\YoYoWebApp.csproj",
+  "projectFilePath": "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoTest\\YoYoWebApp\\YoYoWebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\91902\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\91902\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

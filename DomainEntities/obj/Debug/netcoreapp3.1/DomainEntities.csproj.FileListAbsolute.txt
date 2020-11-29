@@ -6,3 +6,11 @@ E:\02020\Digital mind\YoYo-Web-App\DomainEntities\obj\Debug\netcoreapp3.1\Domain
 E:\02020\Digital mind\YoYo-Web-App\DomainEntities\obj\Debug\netcoreapp3.1\DomainEntities.csproj.CoreCompileInputs.cache
 E:\02020\Digital mind\YoYo-Web-App\DomainEntities\obj\Debug\netcoreapp3.1\DomainEntities.dll
 E:\02020\Digital mind\YoYo-Web-App\DomainEntities\obj\Debug\netcoreapp3.1\DomainEntities.pdb
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\DomainEntities\bin\Debug\netcoreapp3.1\DomainEntities.deps.json
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\DomainEntities\bin\Debug\netcoreapp3.1\DomainEntities.dll
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\DomainEntities\bin\Debug\netcoreapp3.1\DomainEntities.pdb
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\DomainEntities\obj\Debug\netcoreapp3.1\DomainEntities.AssemblyInfoInputs.cache
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\DomainEntities\obj\Debug\netcoreapp3.1\DomainEntities.AssemblyInfo.cs
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\DomainEntities\obj\Debug\netcoreapp3.1\DomainEntities.csproj.CoreCompileInputs.cache
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\DomainEntities\obj\Debug\netcoreapp3.1\DomainEntities.dll
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\DomainEntities\obj\Debug\netcoreapp3.1\DomainEntities.pdb

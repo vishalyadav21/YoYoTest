@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\02020\\Digital mind\\YoYo-Web-App\\DomainEntities\\DomainEntities.csproj",
+      "projectUniqueName": "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoTest\\DomainEntities\\DomainEntities.csproj",
       "projectName": "DomainEntities",
-      "projectPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\DomainEntities\\DomainEntities.csproj",
+      "projectPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoTest\\DomainEntities\\DomainEntities.csproj",
       "packagesPath": "C:\\Users\\91902\\.nuget\\packages\\",
-      "outputPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\DomainEntities\\obj\\",
+      "outputPath": "E:\\02020\\Digital mind\\YoYo-Web-App\\YoYoTest\\DomainEntities\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
