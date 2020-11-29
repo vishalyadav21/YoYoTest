@@ -228,3 +228,4 @@ E:\02020\Digital mind\YoYo-Web-App\YoYoTest\YoYoWebApp\obj\Debug\netcoreapp3.1\s
 E:\02020\Digital mind\YoYo-Web-App\YoYoTest\YoYoWebApp\obj\Debug\netcoreapp3.1\YoYoWebApp.dll
 E:\02020\Digital mind\YoYo-Web-App\YoYoTest\YoYoWebApp\obj\Debug\netcoreapp3.1\YoYoWebApp.pdb
 E:\02020\Digital mind\YoYo-Web-App\YoYoTest\YoYoWebApp\obj\Debug\netcoreapp3.1\YoYoWebApp.genruntimeconfig.cache
+E:\02020\Digital mind\YoYo-Web-App\YoYoTest\YoYoWebApp\obj\Debug\netcoreapp3.1\Razor\Views\YoYoTest\TrackDetails.cshtml.g.cs

@@ -5,46 +5,6 @@
     </div>
     <partial name="FitnessRating" model="Model.FitnessRating">
 
-        <div>Tracks</div>
-        <table class="table">
-            <tbody>
-                @foreach (var item in Model.TrackDetails)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SrNo)
-                        </td>
-                        <td class="col-md-4">
-                            @Html.DisplayFor(modelItem => item.AthleteName)
-                        </td>
-                        @if (item.IsStopped)
-                        {
-                            <td>
-                                @Html.DropDownListFor(model => item.StoppedAt, new SelectList(item.LevelVsShuttleList), "--Select--", new { @class = "form-control col-md-4" })
-                            </td>
-                        }
-                        else
-                        {
-                            <td class="col-md-4">
-                                <button id="warn_@(item.SrNo)" onclick="AthleteWarned('warn_@(item.SrNo)');" data-IsWarned="@(item.IsWarned)">Warn</button>
-                            </td>
-                            <td class="col-md-4">
-                                <button id="stop_@(item.SrNo)" onclick="AthleteStopped('stop_@(item.SrNo)');" data-IsStopped="@(item.IsStopped)">Stop</button>
-                            </td> 
-                        }
-                    </tr>  
-                }
-            </tbody>
-        </table>
-        <script>
-            function AthleteWarned(obj) {
-                $("#" + obj).text("Warned")
-            }
-            function AthleteStopped(obj) {
-                $("#" + obj).text("Stopped");
-            }
-</script>
+    <partial name="TrackDetails" model="Model.TrackDetails">
 
-       
    
-        

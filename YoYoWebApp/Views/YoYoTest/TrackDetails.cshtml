@@ -1,0 +1,52 @@
+﻿@model List<TrackDetailsViewModel>
+
+<div>Tracks</div>
+<div id="divTrackDetails"> 
+    <table class="table">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SrNo)
+                    </td>
+                    <td class="col-md-4">
+                        @Html.DisplayFor(modelItem => item.AthleteName)
+                    </td>
+                    @if (item.IsStopped)
+                    {
+                        <td>
+                            @Html.DropDownListFor(model => item.StoppedAt, new SelectList(item.LevelVsShuttleList), "--Select--", new { @class = "form-control col-md-4" })
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="col-md-4">
+                            <button id="warn_@(item.SrNo)" onclick="AthleteWarned('warn_@(item.SrNo)');" data-IsWarned="@(item.IsWarned)">Warn</button>
+                        </td>
+                        <td class="col-md-4">
+                            <button id="stop_@(item.SrNo)" onclick="AthleteStopped('stop_@(item.SrNo)');" data-IsStopped="@(item.IsStopped)">Stop</button>
+                        </td>
+
+                    }
+                </tr>
+
+            }
+        </tbody>
+    </table> 
+</div>
+<script>
+    function AthleteWarned(obj) {
+        $("#" + obj).text("Warned"); 
+    }
+    function AthleteStopped(obj) {
+        $("#" + obj).text("Stopped");
+        $.ajax({
+            url: "/yoyotest/Tracks",
+            data: { isWarned: true, isStopped: true },
+            success: function (ajaxresult) {
+                $("#divTrackDetails").html(ajaxresult);
+            }
+        });
+    }
+</script>

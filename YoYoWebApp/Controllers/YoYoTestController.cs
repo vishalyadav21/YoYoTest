@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RepositoryServices;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using YoYoWebApp.Models;
 
 namespace YoYoWebApp.Controllers
@@ -20,27 +19,57 @@ namespace YoYoWebApp.Controllers
         }
 
         public IActionResult Play(int level, int shuttle)
-        {
-            var nextShuttle = GetNextPresentShuttle(level, shuttle);
-            var fitnessRatingViewModel = new FitnessRatingViewModel();
+        {  
+            var result = new FitnessRatingViewModel();
             var beeptestjson = _repositoryService.ReadFitnessRatingJson();
-            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FitnessRatingViewModel>>(beeptestjson)
+            List<FitnessRatingViewModel> newList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FitnessRatingViewModel>>(beeptestjson)
+                                                    .Where(m => Convert.ToInt32(m.SpeedLevel) == level)
+                                                    .Select(m => new FitnessRatingViewModel
+                                                    {
+                                                        SpeedLevel = m.SpeedLevel,
+                                                        ShuttleNo = m.ShuttleNo,
+                                                        CommulativeTime = m.CommulativeTime,
+                                                        StartTime = m.StartTime,
+                                                        LevelTime = m.LevelTime,
+                                                        NextShuttle = m.NextShuttle,
+                                                        AccumulatedShuttleDistance = m.AccumulatedShuttleDistance,
+                                                        Speed = m.Speed
+                                                    }).ToList();
+            if (newList.Count == 0)
+            {
+                result = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FitnessRatingViewModel>>(beeptestjson)
+                            .OrderBy(x => Convert.ToInt32(x.SpeedLevel))
+                            .FirstOrDefault(x => Convert.ToInt32(x.SpeedLevel) > level);
+                result.NextShuttle = Convert.ToDateTime("00:" + result.CommulativeTime).Subtract(Convert.ToDateTime("00:" + result.StartTime)).TotalSeconds;
+            }
+            if (newList.Count > 1)
+            { 
+                result = newList.FirstOrDefault(x => Convert.ToInt32(x.ShuttleNo) > shuttle);
+                if (result == null)
+                {
+                    result = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FitnessRatingViewModel>>(beeptestjson)
+                            .OrderBy(x => Convert.ToInt32(x.SpeedLevel))
+                            .FirstOrDefault(x => Convert.ToInt32(x.SpeedLevel) > level);
+                    result.NextShuttle = Convert.ToDateTime("00:" + result.CommulativeTime).Subtract(Convert.ToDateTime("00:" + result.StartTime)).TotalSeconds;
+                }
+            }
+
+            if (result != null && result.CommulativeTime == null)
+            {
+                result = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FitnessRatingViewModel>>(beeptestjson)
                         .OrderBy(x => Convert.ToInt32(x.SpeedLevel))
                         .FirstOrDefault(x => Convert.ToInt32(x.SpeedLevel) > level);
-            result.NextShuttle = Convert.ToDateTime("00:" + result.CommulativeTime).Subtract(Convert.ToDateTime("00:" + result.StartTime)).TotalSeconds;
-            result.NextShuttle = 5;
+                result.NextShuttle = Convert.ToDateTime("00:" + result.CommulativeTime).Subtract(Convert.ToDateTime("00:" + result.StartTime)).TotalSeconds;
+            }
+           // result.NextShuttle = 5;
             return PartialView("FitnessRating", result); 
         }
 
-        public IEnumerable<string> GetNextPresentShuttle(int level, int shuttle)
+        public bool GetNextPresentShuttle(int level, int shuttle)
         { 
             var beeptestjson = _repositoryService.ReadFitnessRatingJson();
-            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FitnessRatingViewModel>>(beeptestjson)
-                         .GroupBy(f => new { f.SpeedLevel })
-                        .Select(a => a.AsEnumerable())
-                        .Select(b => b.OrderBy(f => f.ShuttleNo).FirstOrDefault(x => Convert.ToInt32(x.ShuttleNo) > shuttle))
-                        .Select(x=>x.ShuttleNo);
-             
+            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FitnessRatingViewModel>>(beeptestjson) 
+                        .Any(x => Convert.ToInt32(x.SpeedLevel) == level && Convert.ToInt32(x.ShuttleNo) == shuttle); 
 
             return result;
         }
@@ -72,6 +101,13 @@ namespace YoYoWebApp.Controllers
             trackDetails.Add(new TrackDetailsViewModel { SrNo = 3, AthleteName = "Dean Karnazes", IsStopped = false, IsWarned = false, LevelVsShuttleList = levelVsShuttleList });
             trackDetails.Add(new TrackDetailsViewModel { SrNo = 4, AthleteName = "Usain Bolt", IsStopped = false, IsWarned = false, LevelVsShuttleList = levelVsShuttleList });
             return trackDetails;
+        }
+
+        public IActionResult Tracks()
+        {
+            var result = new TrackDetailsViewModel();
+            
+            return PartialView("TrackDetails", result);
         }
     }
 }
