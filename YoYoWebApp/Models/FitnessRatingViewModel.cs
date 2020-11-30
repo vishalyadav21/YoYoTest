@@ -22,16 +22,11 @@ namespace YoYoWebApp.Models
         public double NextShuttle { get; set; }
 
         public string Speed { get; set; }
+
         public string CommulativeTime { get; set; }
+
         public string StartTime { get; set; }
                 
-        public IEnumerable<TrackDetailsViewModel> TrackDetails { get; set; }
-
-        //public FitnessRatingViewModel()
-        //{
-        //    SpeedLevel = "0";
-        //    ShuttleNo = "0";
-        //    AccumulatedShuttleDistance = "0";
-        //}
+        public IEnumerable<TrackDetailsViewModel> TrackDetails { get; set; }  
     }
 }

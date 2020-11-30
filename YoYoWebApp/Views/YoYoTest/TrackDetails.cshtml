@@ -1,6 +1,10 @@
 ﻿@model List<TrackDetailsViewModel>
 
-<div>Tracks</div>
+<style>
+    .minWidth100 {
+        min-width: 100px;
+    }
+</style>
 <div id="divTrackDetails"> 
     <table class="table">
         <tbody>
@@ -15,8 +19,8 @@
                     </td>
                     @if (item.IsStopped)
                     {
-                        <td>
-                            @Html.DropDownListFor(model => item.StoppedAt, new SelectList(item.LevelVsShuttleList), "--Select--", new { @class = "form-control col-md-4" })
+                        <td colspan="2">
+                            @Html.DropDownListFor(model => item.StoppedAt, new SelectList(item.LevelVsShuttleList), "--Select--", new { @class = "form-control col-md-4 minWidth100" })
                         </td>
                     }
                     else
@@ -25,7 +29,7 @@
                             <button id="warn_@(item.SrNo)" onclick="AthleteWarned('warn_@(item.SrNo)');" data-IsWarned="@(item.IsWarned)">Warn</button>
                         </td>
                         <td class="col-md-4">
-                            <button id="stop_@(item.SrNo)" onclick="AthleteStopped('stop_@(item.SrNo)');" data-IsStopped="@(item.IsStopped)">Stop</button>
+                            <button id="stop_@(item.SrNo)" onclick="AthleteStopped('stop_@(item.SrNo)',@(item.SrNo));" data-IsStopped="@(item.IsStopped)">Stop</button>
                         </td>
 
                     }
@@ -33,17 +37,25 @@
 
             }
         </tbody>
-    </table> 
+    </table>  
 </div>
 <script>
     function AthleteWarned(obj) {
-        $("#" + obj).text("Warned"); 
-    }
-    function AthleteStopped(obj) {
-        $("#" + obj).text("Stopped");
+        $("#" + obj).text("Warned");
         $.ajax({
-            url: "/yoyotest/Tracks",
-            data: { isWarned: true, isStopped: true },
+            url: "/yoyotest/WarnAthlete",
+            data: { srNo: id },
+            success: function (ajaxresult) {
+                $("#divTrackDetails").html(ajaxresult);
+            }
+        });
+    }
+    function AthleteStopped(obj, id) {
+        $("#" + obj).text("Stopped");
+        var level = $("#SpeedLevel").html() + "-" + $("#ShuttleNo").html();
+        $.ajax({
+            url: "/yoyotest/StopAthlete",
+            data: { srNo: id, level: level },
             success: function (ajaxresult) {
                 $("#divTrackDetails").html(ajaxresult);
             }

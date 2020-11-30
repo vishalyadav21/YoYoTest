@@ -1,0 +1,34 @@
+[
+  {
+    "SrNo": 1,
+    "AthleteName": "Aston Eaton",
+    "IsWarned": false,
+    "IsStopped": false,
+    "StoppedAt": "13-4",
+    "LevelVsShuttleList": []
+  },
+  {
+    "SrNo": 2,
+    "AthleteName": "Bryan Clay",
+    "IsWarned": false,
+    "IsStopped": false,
+    "StoppedAt": "14-2",
+    "LevelVsShuttleList": []
+  },
+  {
+    "SrNo": 3,
+    "AthleteName": "Dean Karnazes",
+    "IsWarned": false,
+    "IsStopped": false,
+    "StoppedAt": "13-3",
+    "LevelVsShuttleList": []
+  },
+  {
+    "SrNo": 4,
+    "AthleteName": "Usain Bolt",
+    "IsWarned": false,
+    "IsStopped": false,
+    "StoppedAt": "13-3",
+    "LevelVsShuttleList": []
+  }
+]

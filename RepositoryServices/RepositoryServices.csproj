@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="fitnessrating_beeptest.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DomainEntities\DomainEntities.csproj" />
   </ItemGroup>
 
