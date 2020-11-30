@@ -96,7 +96,7 @@ namespace YoYoWebApp.Controllers
             {
                 item.IsStopped = true;
                 item.LevelVsShuttleList = levelVsShuttleList;
-                item.StoppedAt = levelVsShuttleList.ElementAt(levelVsShuttleList.IndexOf(level)-1);
+                item.StoppedAt = (levelVsShuttleList.IndexOf(level) - 1) > 0 ? levelVsShuttleList.ElementAt(levelVsShuttleList.IndexOf(level)-1) : levelVsShuttleList.ElementAt(0);
             }
             string output = Newtonsoft.Json.JsonConvert.SerializeObject(result, Newtonsoft.Json.Formatting.Indented);
             _repositoryService.InsertIntoJson(output); 

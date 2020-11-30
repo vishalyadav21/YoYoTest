@@ -26,22 +26,24 @@
     }
     else
     {
+
         <div class="col-md-offset-4 col-md-3 col-sm-12 col-xs-12 row circle text-center">
             <div class="col-sm-12">
                 @Html.DisplayNameFor(model => model.SpeedLevel)
-                 <span id="SpeedLevel">@Model.SpeedLevel</span> 
+                <span id="SpeedLevel">@Model.SpeedLevel</span>
             </div>
             <div class="col-sm-12">
-                @Html.DisplayNameFor(model => model.ShuttleNo) 
+                @Html.DisplayNameFor(model => model.ShuttleNo)
                 <span id="ShuttleNo">@Model.ShuttleNo</span>
             </div>
             <div class="col-sm-12">
-                @Html.DisplayNameFor(model => model.Speed) 
+                @Html.DisplayNameFor(model => model.Speed)
                 <span id="Speed">@Model.Speed</span> Km/h
             </div>
         </div>
     }
 
+    <div id="progress1" class="prgr"></div>
     <div class="col-md-12 row text-center">
         <div class="col-sm-4">
             @Html.DisplayNameFor(model => model.NextShuttle)
@@ -58,9 +60,9 @@
     </div>
 </div>
 
-<script src="~/js/jquery-3.5.1.min.js"></script>
+
 <script>
-    $(document).ready(function () { 
+    $(document).ready(function () {
         var nextShuttleStartsIn = 0;
         function GetNextShuttleDetails() {
             if (parseInt($("#NextShuttle").html()) == 0) {
@@ -70,28 +72,38 @@
                     url: "/yoyotest/Play",
                     data: { level: parseInt(level), shuttle: parseInt(shuttle) },
                     success: function (ajaxresult) {
-                        $("#divFitnesRating").html(ajaxresult); 
+                        $("#divFitnesRating").html(ajaxresult);
                         nextShuttleStartsIn = parseInt($("#NextShuttle").html());
                         var clearIntervalAfter = setInterval(function () {
                             if (parseInt($("#NextShuttle").html()) != 0) {
                                 $("#NextShuttle").html($("#NextShuttle").html() - 1);
                             }
+                            var progress = $("#progress1").swidget();
+                            progress.value(parseFloat(progress.value() + (100 / nextShuttleStartsIn)).toFixed(2));
+                            console.log(progress.value());
                             if (parseInt($("#NextShuttle").html()) == 0) {
                                 clearInterval(clearIntervalAfter);
                             }
-                        }, 1000); 
-                    } 
-                }).done(function () { 
+                        }, 1000);
+                    }
+                }).done(function () {
                     setTimeout(function () { GetNextShuttleDetails(); }, nextShuttleStartsIn * 1000);
                 });
             }
         }
-       
+
         $("#playButton").click(function () {
             GetNextShuttleDetails();
         });
-        
+
+        $("#progress1").shieldProgressBar({
+            value: 0,
+            text: {
+                enabled: true,
+                template: "{0} %"
+            }
+        });
     });
 
-   
+
 </script>
