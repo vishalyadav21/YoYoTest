@@ -7,32 +7,23 @@
         width: 200px;
         height: 200px;
     }
-
-    .playButton {
-        width: 100%;
-        /*padding-top: 5rem;
-        text-decoration: none;
-        background-color: transparent;
-        color: #0366d6;*/
-    }
 </style>
 
 <div id="divFitnesRating">
     @if (String.IsNullOrEmpty(Model.ShuttleNo))
     {
-        <div class="col-md-offset-4 col-md-3 col-sm-12 col-xs-12 row text-center">
-            <button class="playButton text-center" id="playButton" type="button">Play</button>
+        <div class="row text-center">
+            <button class="btn btn-info circle text-center offset-4 offset-sm-4" id="playButton" type="button">Play</button>
         </div>
     }
     else
     {
-
-        <div class="col-md-offset-4 col-md-3 col-sm-12 col-xs-12 row circle text-center">
-            <div class="col-sm-12">
+        <div class="pt-5 circle text-center offset-4">
+            <div class="col-sm-12 text-primary">
                 @Html.DisplayNameFor(model => model.SpeedLevel)
                 <span id="SpeedLevel">@Model.SpeedLevel</span>
             </div>
-            <div class="col-sm-12">
+            <div class="col-sm-12 text-primary">
                 @Html.DisplayNameFor(model => model.ShuttleNo)
                 <span id="ShuttleNo">@Model.ShuttleNo</span>
             </div>
@@ -43,23 +34,25 @@
         </div>
     }
 
-    <div id="progress1" class="prgr"></div>
-    <div class="col-md-12 row text-center">
-        <div class="col-sm-4">
-            @Html.DisplayNameFor(model => model.NextShuttle)
-            00 : <span id="NextShuttle">@Model.NextShuttle</span> S
-        </div>
-        <div class="col-sm-4">
+    <div id="progressBar" class="mt-4 mb-4"></div>
+    
+    <div class="row text-center">
+        <span class="col-md-4 col-sm-4 col-xs-2 border-right">
+            @Html.DisplayNameFor(model => model.NextShuttle) <br />
+            00 : <span id="NextShuttle">@Model.NextShuttle</span> s
+        </span>
+        <span class="col-md-4 col-sm-4 col-xs-2 border-right">
             @Html.DisplayNameFor(model => model.LevelTime)
+            <br />
             @Html.DisplayFor(model => model.LevelTime)
-        </div>
-        <div class="col-sm-4">
+        </span>
+        <span class="col-md-4 col-sm-4 col-xs-2">
             @Html.DisplayNameFor(model => model.AccumulatedShuttleDistance)
-            @Html.DisplayFor(model => model.AccumulatedShuttleDistance) M
-        </div>
+            <br />
+            @Html.DisplayFor(model => model.AccumulatedShuttleDistance)
+        </span>
     </div>
 </div>
-
 
 <script>
     $(document).ready(function () {
@@ -76,9 +69,9 @@
                         nextShuttleStartsIn = parseInt($("#NextShuttle").html());
                         var clearIntervalAfter = setInterval(function () {
                             if (parseInt($("#NextShuttle").html()) != 0) {
-                                $("#NextShuttle").html($("#NextShuttle").html() - 1);
+                                $("#NextShuttle").html(($("#NextShuttle").html() - 1));
                             }
-                            var progress = $("#progress1").swidget();
+                            var progress = $("#progressBar").swidget();
                             progress.value(parseFloat(progress.value() + (100 / nextShuttleStartsIn)).toFixed(2));
                             console.log(progress.value());
                             if (parseInt($("#NextShuttle").html()) == 0) {
@@ -93,10 +86,12 @@
         }
 
         $("#playButton").click(function () {
+            $(".btn-primary").show();
+            $(".btn-danger").show();
             GetNextShuttleDetails();
         });
 
-        $("#progress1").shieldProgressBar({
+        $("#progressBar").shieldProgressBar({
             value: 0,
             text: {
                 enabled: true,
@@ -104,6 +99,4 @@
             }
         });
     });
-
-
 </script>

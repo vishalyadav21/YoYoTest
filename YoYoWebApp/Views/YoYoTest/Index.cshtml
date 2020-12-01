@@ -1,9 +1,15 @@
 ﻿@model YoYoTestWrapper
-    <script src="~/js/jquery-3.5.1.min.js"></script>
+<script src="~/js/jquery-3.5.1.min.js"></script>
 
-    <div><h4>YoYo Test</h4></div>
-    <partial name="FitnessRating" model="Model.FitnessRating">
+<div class="offset-sm-4 col-md-2 text-center"><h4>YoYo Test</h4></div>
+<partial name="FitnessRating" model="Model.FitnessRating">
 
-    <div>Tracks</div>
-    <partial name="TrackDetails" model="Model.TrackDetails">
+<div><b>Tracks</b></div>
+<partial name="TrackDetails" model="Model.TrackDetails">
 
+<script> 
+    $(document).ready(function () {
+        $(".btn-primary").hide();
+        $(".btn-danger").hide();
+    });
+</script>

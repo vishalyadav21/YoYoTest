@@ -26,7 +26,5 @@ namespace YoYoWebApp.Models
         public string CommulativeTime { get; set; }
 
         public string StartTime { get; set; }
-                
-        public IEnumerable<TrackDetailsViewModel> TrackDetails { get; set; }  
     }
 }

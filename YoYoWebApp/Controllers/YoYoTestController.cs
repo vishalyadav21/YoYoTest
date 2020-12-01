@@ -18,6 +18,7 @@ namespace YoYoWebApp.Controllers
             _repositoryService = repositoryService;  
         }
 
+        [HttpGet]
         public IActionResult Play(int level, int shuttle)
         {  
             
@@ -37,10 +38,13 @@ namespace YoYoWebApp.Controllers
             return PartialView("FitnessRating", result); 
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             var yoYoTestWrapper = new YoYoTestWrapper();
             yoYoTestWrapper.FitnessRating = new FitnessRatingViewModel();
+            yoYoTestWrapper.FitnessRating.LevelTime = "0 m";
+            yoYoTestWrapper.FitnessRating.AccumulatedShuttleDistance = "0 m";
             var levelVsShuttleList = new List<string>();
             var beeptestjson = _repositoryService.ReadFitnessRatingJson();
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FitnessRatingViewModel>>(beeptestjson);
@@ -50,8 +54,9 @@ namespace YoYoWebApp.Controllers
             }
             yoYoTestWrapper.TrackDetails = GetTrackDetails(levelVsShuttleList);
             return View(yoYoTestWrapper);
-        } 
+        }
 
+        [HttpGet]
         public List<TrackDetailsViewModel> GetTrackDetails(List<string> levelVsShuttleList = null)
         {
             if (levelVsShuttleList == null)
@@ -67,6 +72,7 @@ namespace YoYoWebApp.Controllers
             return result;
         } 
 
+        [HttpGet]
         public IActionResult WarnAthlete(int srNo)
         {
             var athletes = _repositoryService.GetTrackDetails();
@@ -81,6 +87,7 @@ namespace YoYoWebApp.Controllers
             return PartialView("TrackDetails", result);
         }
 
+        [HttpGet]
         public IActionResult StopAthlete(int srNo, string level)
         { 
             var athletes = _repositoryService.GetTrackDetails();
@@ -102,6 +109,12 @@ namespace YoYoWebApp.Controllers
             _repositoryService.InsertIntoJson(output); 
 
             return PartialView("TrackDetails", result);
+        }
+
+        public IActionResult Result()
+        {
+
+            return PartialView("Result");
         }
     }
 }

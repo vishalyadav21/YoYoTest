@@ -11,7 +11,6 @@ namespace DomainEntities
         public string LevelTime { get; set; }
         public string CommulativeTime { get; set; }
         public string StartTime { get; set; }
-        public IEquatable<TrackDetails> TrackDetails { get; set; }
         public double NextShuttle { get; set; }
     }
 }

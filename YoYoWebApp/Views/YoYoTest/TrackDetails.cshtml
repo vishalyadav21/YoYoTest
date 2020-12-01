@@ -1,63 +1,80 @@
 ﻿@model List<TrackDetailsViewModel>
 
 <style>
-    .minWidth100 {
-        min-width: 100px;
-    }
+    .minWidth100 {    min-width: 100px;    }
 </style>
+
 <div id="divTrackDetails"> 
     <table class="table">
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SrNo)
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SrNo)
+                </td>
+                <td class="col-md-4">
+                    @Html.DisplayFor(modelItem => item.AthleteName)
+                </td>
+                @if (item.IsStopped)
+                {
+                    <td colspan="2">
+                        @Html.DropDownListFor(model => item.StoppedAt, new SelectList(item.LevelVsShuttleList), "--Select--", new { @class = "form-control col-md-4 minWidth100" })
                     </td>
+                }
+                else
+                {
+                    var disabled = "";
+                    var warn = "Warn";
+                    if (item.IsWarned)
+                    {
+                        disabled = "disabled";
+                        warn = "Warned";
+                    }
                     <td class="col-md-4">
-                        @Html.DisplayFor(modelItem => item.AthleteName)
+                        <button id="warn_@(item.SrNo)" class="btn btn-primary @(disabled)" @(disabled) onclick="AthleteWarned('warn_@(item.SrNo)',@(item.SrNo));" data-IsWarned="@(item.IsWarned)">@(warn)</button>
                     </td>
-                    @if (item.IsStopped)
-                    {
-                        <td colspan="2">
-                            @Html.DropDownListFor(model => item.StoppedAt, new SelectList(item.LevelVsShuttleList), "--Select--", new { @class = "form-control col-md-4 minWidth100" })
-                        </td>
-                    }
-                    else
-                    {
-                        <td class="col-md-4">
-                            <button id="warn_@(item.SrNo)" onclick="AthleteWarned('warn_@(item.SrNo)');" data-IsWarned="@(item.IsWarned)">Warn</button>
-                        </td>
-                        <td class="col-md-4">
-                            <button id="stop_@(item.SrNo)" onclick="AthleteStopped('stop_@(item.SrNo)',@(item.SrNo));" data-IsStopped="@(item.IsStopped)">Stop</button>
-                        </td>
-
-                    }
+                    
+                    <td class="col-md-4">
+                        <button id="stop_@(item.SrNo)" class="btn btn-danger" onclick="AthleteStopped('stop_@(item.SrNo)',@(item.SrNo));" data-IsStopped="@(item.IsStopped)">Stop</button>
+                    </td>
+                }
                 </tr>
-
-            }
+             }
         </tbody>
     </table>  
 </div>
 <script>
-    function AthleteWarned(obj) {
-        $("#" + obj).text("Warned");
+   
+    function AthleteWarned(obj, id) {
         $.ajax({
             url: "/yoyotest/WarnAthlete",
             data: { srNo: id },
             success: function (ajaxresult) {
                 $("#divTrackDetails").html(ajaxresult);
+                $("#" + obj).text("Warned");
+                $("#" + obj).addClass("disabled");
+                $("#" + obj).attr("disabled", "disabled");
             }
         });
     }
     function AthleteStopped(obj, id) {
         $("#" + obj).text("Stopped");
+        $("#" + obj).addClass("disabled");
         var level = $("#SpeedLevel").html() + "-" + $("#ShuttleNo").html();
         $.ajax({
             url: "/yoyotest/StopAthlete",
             data: { srNo: id, level: level },
             success: function (ajaxresult) {
-                $("#divTrackDetails").html(ajaxresult);
+                $("#divTrackDetails").html(ajaxresult); 
+                if (!($(".btn-danger").length)) { 
+                    $.ajax({
+                        url: "/yoyotest/Result", 
+                        success: function (ajaxresult) {
+                            $("#divFitnesRating").html(ajaxresult);  
+                        } 
+                    });
+                }
             }
         });
     }

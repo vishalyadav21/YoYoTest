@@ -66,6 +66,8 @@ namespace RepositoryServices
                 result = fitnessRatingList.OrderBy(x => Convert.ToInt32(x.SpeedLevel)).FirstOrDefault(x => Convert.ToInt32(x.SpeedLevel) > level);
             }
             result.NextShuttle = Convert.ToDateTime("00:" + result.CommulativeTime).Subtract(Convert.ToDateTime("00:" + result.StartTime)).TotalSeconds;
+            result.LevelTime = result.LevelTime + " m";
+            result.AccumulatedShuttleDistance = result.AccumulatedShuttleDistance + " m";
             return result;
         }
     }
